@@ -122,10 +122,18 @@ public class CustomLinkedList<T> {
 		// Borra lo que hay en posición
 	}
 
+	/**
+	 * Returns true if the list is empty
+	 * 
+	 * @return
+	 */
 	public boolean isEmpty() {
 		return firstElement == null;
 	}
 
+	/**
+	 * Set the list empty
+	 */
 	public void empty() {
 		this.firstElement = null;
 	}
