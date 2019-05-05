@@ -1,6 +1,6 @@
 package com.tpa.tda;
 
-interface Stack<T> {
+interface AbstractDataType<T> {
 	public boolean push(T value); 
 	public T pop();
 	public T peek();
