@@ -6,30 +6,29 @@ public class DynamicQueue<T> implements Queue<T> {
 	private Node<T> lastElement;
 	private int size;
 
-    public DynamicQueue() {
+	public DynamicQueue() {
 		firstElement = lastElement = null;
 		size = 0;
-    }
+	}
 
 	@Override
 	public boolean push(T value) {
-    	
-    	if(firstElement == null) {
-    		firstElement = lastElement = new Node<T>(value);
-    	}
-		else {
-		    Node<T> temp = new Node<T>(value);
-		    lastElement.next = temp;
-		    lastElement = temp;
+
+		if (firstElement == null) {
+			firstElement = lastElement = new Node<T>(value);
+		} else {
+			Node<T> temp = new Node<T>(value);
+			lastElement.next = temp;
+			lastElement = temp;
 		}
 		size++;
-    	
+
 		return true;
 	}
 
 	@Override
 	public T pop() {
-		if(firstElement == null) {
+		if (firstElement == null) {
 			return null;
 		}
 		T value = firstElement.value;
@@ -40,7 +39,7 @@ public class DynamicQueue<T> implements Queue<T> {
 
 	@Override
 	public T peek() {
-		return (firstElement == null) ? null : (T) firstElement.value;
+		return (firstElement == null) ? null : firstElement.value;
 	}
 
 	@Override
@@ -58,6 +57,5 @@ public class DynamicQueue<T> implements Queue<T> {
 	public int size() {
 		return size;
 	}
-	
-	
+
 }
