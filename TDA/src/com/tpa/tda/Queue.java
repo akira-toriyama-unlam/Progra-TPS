@@ -1,6 +1,6 @@
 package com.tpa.tda;
 
-interface AbstractDataType<T> {
+interface Queue<T> {
 	public boolean push(T value); 
 	public T pop();
 	public T peek();

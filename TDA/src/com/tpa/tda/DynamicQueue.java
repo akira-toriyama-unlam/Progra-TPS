@@ -1,22 +1,22 @@
 package com.tpa.tda;
 
-public class DynamicQueue<T> implements AbstractDataType<T> {
+public class DynamicQueue<T> implements Queue<T> {
 
 	private Node<T> firstElement;
 	private Node<T> lastElement;
 	private int size;
 
     public DynamicQueue() {
-		firstElement = null;
-		lastElement = null;
+		firstElement = lastElement = null;
 		size = 0;
     }
 
 	@Override
 	public boolean push(T value) {
     	
-    	if(firstElement == null)
+    	if(firstElement == null) {
     		firstElement = lastElement = new Node<T>(value);
+    	}
 		else {
 		    Node<T> temp = new Node<T>(value);
 		    lastElement.next = temp;
@@ -29,8 +29,9 @@ public class DynamicQueue<T> implements AbstractDataType<T> {
 
 	@Override
 	public T pop() {
-		if(firstElement == null)
+		if(firstElement == null) {
 			return null;
+		}
 		T value = firstElement.value;
 		firstElement = firstElement.next;
 		size--;

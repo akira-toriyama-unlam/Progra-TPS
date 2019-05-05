@@ -2,7 +2,7 @@ package com.tpa.tda;
 
 import java.util.Arrays;
 
-public class DynamicStack<T> implements AbstractDataType<T> {
+public class DynamicStack<T> implements Stack<T> {
 	private static final int DEFAULT_CAPACITY = 10;
     private T[] store;
     private int size = 0;
