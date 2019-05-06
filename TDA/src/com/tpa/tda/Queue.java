@@ -1,8 +1,8 @@
 package com.tpa.tda;
 
 interface Queue<T> {
-	public boolean push(T value); 
-	public T pop();
+	public boolean offer(T value); 
+	public T poll();
 	public T peek();
 	public void empty(); 
 	public boolean isEmpty();
