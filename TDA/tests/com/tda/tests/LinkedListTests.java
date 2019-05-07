@@ -141,4 +141,72 @@ public class LinkedListTests {
 		list.pushBack(9);
 		Assert.assertEquals(3, list.search(9));
 	}
+	
+	
+	@Test
+	public void pushBackReverseList() {
+		list.pushBack(1);
+		list.pushBack(2);
+		list.pushBack(3);
+		list.pushBack(4);
+		list.pushBack(5);
+		
+		
+		list.reverse();
+		Assert.assertEquals((Integer) 1, list.popBack());
+		Assert.assertEquals((Integer) 2, list.popBack());
+		Assert.assertEquals((Integer) 3, list.popBack());
+		Assert.assertEquals((Integer) 4, list.popBack());
+		Assert.assertEquals((Integer) 5, list.popBack());
+	}
+	
+	
+	@Test
+	public void insertNodeAtRandomPosition() {
+		list.pushBack(1);
+		list.pushBack(2);
+		list.pushBack(3);
+		list.pushBack(4);
+		list.pushBack(5);
+		
+		Assert.assertEquals((Integer)2, list.searchAt(1));
+		list.insertAt(0, 0);
+		Assert.assertEquals(2, list.search(2));
+		Assert.assertEquals(0, list.search(0));
+		
+		Assert.assertEquals((Integer) 5, list.popBack());
+		Assert.assertEquals((Integer) 4, list.popBack());
+		Assert.assertEquals((Integer) 3, list.popBack());
+		Assert.assertEquals((Integer) 2, list.popBack());
+		Assert.assertEquals((Integer) 1, list.popBack());
+		Assert.assertEquals((Integer) 0, list.popBack());
+	}
+	
+	@Test
+	public void eraseNodeAtRandomPosition() {
+		list.pushBack(1);
+		list.pushBack(2);
+		list.pushBack(3);
+		list.pushBack(4);
+		list.pushBack(5);
+		
+		list.eraseAt(0);
+		list.eraseAt(1);
+		Assert.assertEquals((Integer) 5, list.popBack());
+		Assert.assertEquals((Integer) 4, list.popBack());
+		Assert.assertEquals((Integer) 2, list.popBack());
+	}
+	
+	@Test
+	public void searcNodeAtRandomPosition() {
+		list.pushBack(1);
+		list.pushBack(2);
+		list.pushBack(3);
+		list.pushBack(4);
+		list.pushBack(5);
+		
+		Assert.assertEquals((Integer)1, list.searchAt(0));
+		Assert.assertEquals((Integer)5, list.searchAt(4));
+		Assert.assertEquals(null, list.searchAt(5));
+	}
 }

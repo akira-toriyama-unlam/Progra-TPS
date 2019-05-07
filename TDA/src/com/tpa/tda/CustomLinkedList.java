@@ -9,6 +9,11 @@ public class CustomLinkedList<T> {
 		this.count = 0;
 	}
 
+	public void main(String[] Args) {
+		CustomLinkedList<Integer> l = new CustomLinkedList<Integer>();
+		l.pushBack(1);
+	
+	}
 	/**
 	 * Insert element at the end of the list
 	 * 
@@ -111,15 +116,65 @@ public class CustomLinkedList<T> {
 	}
 
 	public void reverse() {
-		// Da vuelta la lista
-	}
+        Node<T> previous = null; 
+        Node<T> current = firstElement; 
+        Node<T> next = null; 
+        while (current != null) { 
+            next = current.next; 
+            current.next = previous; 
+            previous = current; 
+            current = next; 
+        } 
+        
+        firstElement = previous; 
+        
+    } 
 
 	public void insertAt(int position, T value) {
-		// Inserta valor en posición;
+		
+		Node<T> current = firstElement;
+		Node<T> previous = null;
+		Node<T> toInsert = new Node<T>(value);
+		int i = 0;
+		while (current != null && i < position) {
+			previous = current;
+			current = current.next;
+			i++;
+		}
+		
+		if (current != null) {
+			Node<T> aux = current;
+			toInsert.next = aux;
+			if(i==0) {
+				firstElement = toInsert;
+			}else {
+				previous.next = toInsert;	
+			}
+			
+		}else if(current == null && position ==i ) {
+			previous.next = toInsert;
+		}
+		
 	}
 
 	public void eraseAt(int position) {
-		// Borra lo que hay en posición
+
+		Node<T> current = firstElement;
+		Node<T> previous = null;
+		
+		int i = 0;
+		while (current != null && i < position) {
+			previous = current;
+			current = current.next;
+			i++;
+		}
+		
+		if (current != null && i != 0) {
+			previous.next = current.next;
+		}else if(current != null && i == 0) {
+			firstElement = current.next;
+		}
+		
 	}
 
 	/**
@@ -167,10 +222,18 @@ public class CustomLinkedList<T> {
 	 * @return
 	 */
 	public T searchAt(int position) {
-		if (position < count) {
-
+		Node<T> current = firstElement;
+		
+		int i = 0;
+		while (current != null && i < position) {
+			current = current.next;
+			i++;
 		}
-
+		
+		if (current != null) {
+			return current.value;
+		}
+		
 		return null;
 	}
 
