@@ -60,6 +60,11 @@ public class DynamicStack<T> implements Stack<T> {
 	@Override
 	public boolean isEmpty() {
 		return size == 0;
+	}
+
+	@Override
+	public boolean isFull() {
+		return false;
 	}	
 	
 }

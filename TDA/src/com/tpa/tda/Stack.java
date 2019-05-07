@@ -6,6 +6,7 @@ interface Stack<T> {
 	public T peek();
 	public void empty(); 
 	public boolean isEmpty();
+	public boolean isFull();
 	public int size();
 }
 
