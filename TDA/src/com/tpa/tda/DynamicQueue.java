@@ -11,23 +11,23 @@ public class DynamicQueue<T> implements Queue<T> {
 		size = 0;
 	}
 
-	@Override
-	public boolean push(T value) {
 
+	@Override
+	public boolean offer(T value) {
 		if (firstElement == null) {
-			firstElement = lastElement = new Node<T>(value);
-		} else {
-			Node<T> temp = new Node<T>(value);
-			lastElement.next = temp;
-			lastElement = temp;
-		}
-		size++;
-
-		return true;
+		firstElement = lastElement = new Node<T>(value);
+	} else {
+		Node<T> temp = new Node<T>(value);
+		lastElement.next = temp;
+		lastElement = temp;
 	}
+	size++;
 
+	return true;
+	}
+	
 	@Override
-	public T pop() {
+	public T poll() {
 		if (firstElement == null) {
 			return null;
 		}
@@ -57,5 +57,7 @@ public class DynamicQueue<T> implements Queue<T> {
 	public int size() {
 		return size;
 	}
+
+
 
 }
