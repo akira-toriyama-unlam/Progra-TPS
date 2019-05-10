@@ -9,11 +9,6 @@ public class CustomLinkedList<T> {
 		this.count = 0;
 	}
 
-	public void main(String[] Args) {
-		CustomLinkedList<Integer> l = new CustomLinkedList<Integer>();
-		l.pushBack(1);
-	
-	}
 	/**
 	 * Insert element at the end of the list
 	 * 
@@ -102,79 +97,79 @@ public class CustomLinkedList<T> {
 	public void remove(T value) {
 		Node<T> current = firstElement;
 		Node<T> previous = null;
-		while (current != null && current.value != value) {
-			previous = current;
-			current = current.next;
-		}
+		
+		if(current != null) {
+			while (current != null && current.value != value) {
+				previous = current;
+				current = current.next;
+			}
 
-		if (current == firstElement) {
-			firstElement = null;
-		} else {
-			previous.next = current.next;
+			if (current == firstElement) {
+				firstElement = null;
+			} else {
+				previous.next = current.next;
+			}
+			
+			count--;
 		}
-		count--;
 	}
 
 	public void reverse() {
+		
+		// Marcelito
         Node<T> previous = null; 
         Node<T> current = firstElement; 
         Node<T> next = null; 
-        while (current != null) { 
+        while (current != null) {
             next = current.next; 
             current.next = previous; 
             previous = current; 
             current = next; 
-        } 
-        
+        }
+       
         firstElement = previous; 
         
     } 
 
 	public void insertAt(int position, T value) {
+		Node<T> aux = firstElement;
+		Node<T> newElement = new Node<T>(value);
 		
-		Node<T> current = firstElement;
-		Node<T> previous = null;
-		Node<T> toInsert = new Node<T>(value);
-		int i = 0;
-		while (current != null && i < position) {
-			previous = current;
-			current = current.next;
-			i++;
-		}
-		
-		if (current != null) {
-			Node<T> aux = current;
-			toInsert.next = aux;
-			if(i==0) {
-				firstElement = toInsert;
-			}else {
-				previous.next = toInsert;	
+		if (position >= 0 && position <= this.count) {
+			if (position == 0) {
+				newElement.next = firstElement;
+				firstElement = newElement;
+			} else {
+				int i = 1;
+				while (aux != null && i < position) {
+					aux = aux.next;
+					i++;
+				}
+				newElement.next = aux.next;
+				aux.next = newElement;
 			}
-			
-		}else if(current == null && position ==i ) {
-			previous.next = toInsert;
+			count++;
 		}
-		
 	}
 
 	public void eraseAt(int position) {
-
 		Node<T> current = firstElement;
 		Node<T> previous = null;
 		
-		int i = 0;
-		while (current != null && i < position) {
-			previous = current;
-			current = current.next;
-			i++;
+		if (count != 0 && position >= 0 && position <= this.count - 1) {
+			if (position == 0) {
+				firstElement = firstElement.next;
+			} else {
+				int i = 1;
+				while (current != null && i <= position) {
+					previous = current;
+					current = current.next;
+					i++;
+				}
+				previous.next = current.next;
+			}
+			count--;
 		}
-		
-		if (current != null && i != 0) {
-			previous.next = current.next;
-		}else if(current != null && i == 0) {
-			firstElement = current.next;
-		}
-		
 	}
 
 	/**
@@ -191,6 +186,7 @@ public class CustomLinkedList<T> {
 	 */
 	public void empty() {
 		this.firstElement = null;
+		this.count = 0;
 	}
 
 	/**
@@ -222,19 +218,19 @@ public class CustomLinkedList<T> {
 	 * @return
 	 */
 	public T searchAt(int position) {
-		Node<T> current = firstElement;
-		
-		int i = 0;
-		while (current != null && i < position) {
-			current = current.next;
-			i++;
-		}
-		
-		if (current != null) {
-			return current.value;
+		Node<T> aux = firstElement;
+		if (position >= 0 && position < count) {
+			for(int i = 0; i < position; i++) {
+				aux = aux.next;
+			}
+			return aux.value;
 		}
 		
 		return null;
+	}
+	
+	public int size() {
+		return this.count;
 	}
 
 }
