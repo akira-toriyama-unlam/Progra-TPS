@@ -18,10 +18,10 @@ public class Heap {
 	
 	public void add(int element) {
 		this.array[++size] = element;
-		int actualElement = size;
-		while (this.array[actualElement] < this.array[getParent(actualElement)]) {
-			this.swap(actualElement, this.getParent(actualElement));
-			actualElement = this.getParent(actualElement);
+		int currentElement = size;
+		while (this.array[currentElement] < this.array[getParent(currentElement)]) {
+			this.swap(currentElement, this.getParent(currentElement));
+			currentElement = this.getParent(currentElement);
 		}
 	}
 	
