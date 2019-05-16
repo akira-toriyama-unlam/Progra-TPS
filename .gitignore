@@ -1,6 +1,6 @@
 # Eclipse generated directories
-.project
-.classpath
+*.project
+*.classpath
 
 # Compiled class file
 *.class
